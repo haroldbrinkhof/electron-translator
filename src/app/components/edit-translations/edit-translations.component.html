@@ -1,0 +1,52 @@
+<div fxLayout="row" fxLayoutAlign="start" fxLayoutGap>
+	<div fxLayout="column">
+		<fieldset>
+			<legend>keys</legend>
+			<mat-selection-list style="margin-top:20px;" multiple="false" 
+				size="10" #translationKeySelect 
+				(selectionChange)="selectedTranslationKey($event)">
+				<mat-list-option *ngFor="let key of keys" 
+					[value]="key" >{{key}}</mat-list-option>
+			</mat-selection-list>
+		</fieldset>
+		<div flexLayout="row" id="storeOptions">	
+			<button #saveButton (click)="saveAction()" >Save Project</button> 
+			<input type="text" #addNewTranslationKeyInput /> 
+			<button #newTranslationButton 
+			(click)="addNewTranslationAction(addNewTranslationKeyInput.value)" >
+			Add new Translation key</button>
+		</div>
+		<div fxLayout="row" id="newLanguageOptions">
+			<input type="text" #addNewLanguageInput /> 
+			<button #addNewLanguageButton 
+				(click)="addNewLanguageAction(addNewLanguageInput.value)">
+				Add new language</button>
+		</div>
+	</div>
+	<div fxLayout="column" >
+	<fieldset id="toggleHolder">
+		<legend>filters</legend>
+		<div>
+			<mat-slide-toggle #dirtyCheckBox 
+				(change)="dirtyFilterChange(dirtyCheckBox.checked)" 
+				matBadge="{{dirtyCount}}" matBadgeOverlap="false" 
+				matBadgePosition="above after" matBadgeColor="accent" 
+				>dirty</mat-slide-toggle>
+		</div>
+		<div>
+			<mat-slide-toggle #onlyMissingCheckBox 
+				(change)="onlyMissingFilterChange(onlyMissingCheckBox.checked)"
+			       	matBadge="{{missingCount}}" matBadgeOverlap="false" 
+				matBadgePosition="above after" matBadgeColor="accent"
+				>without translation</mat-slide-toggle>
+		</div>
+	</fieldset>
+	</div>
+</div>
+<div fxFill fxLayout="column">
+	<div>
+		<app-specific-language-editor (textChangedEvent)="textChanged($event)" 
+		*ngFor="let file of currentProject?.onlyPoFiles()"  [currentFile]="file" 
+		[currentKey]="currentKey" ></app-specific-language-editor>
+	</div>
+</div>

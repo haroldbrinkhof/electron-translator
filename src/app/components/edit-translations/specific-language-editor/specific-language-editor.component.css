@@ -1,0 +1,45 @@
+fieldset {
+	margin-left: 20px;
+	margin-top:15px;
+	margin-right:30px;
+	margin-bottom:10px;
+}
+
+.languageHolder > div > label {
+	margin-right: 20px;
+}
+.languageHolder > div {
+	margin-bottom: 15px;
+}
+
+span.notice {
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+#inputElements > div {
+	margin-top:20px;
+}
+#inputElements > div > label {
+	margin-right:20px;
+	margin-left:25px;
+}
+#inputElements > div > input {
+	margin-right:20px;
+}
+#inputElements > div > textarea {
+	margin-right:20px;
+}
+#inputElements > div > button {
+	margin-right:15px;
+}
+
+#asciidocLink{
+	word-spacing:4px;
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+}
+#asciidocLink > a{
+	margin-left:8px;
+}

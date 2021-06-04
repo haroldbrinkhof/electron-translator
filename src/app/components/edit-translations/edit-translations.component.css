@@ -1,0 +1,53 @@
+fieldset {
+	margin-left: 20px;
+	margin-top:15px;
+	margin-right:10px;
+	margin-bottom:10px;
+}
+
+.mat-list-item:nth-child(even) {background-color: #f2f9ff;}
+.mat-list-item:nth-child(odd) {background-color: #eceff3;}
+.mat-list-item:hover {background-color: #34b7eb;}
+.mat-list-item:focus {background-color: #eb9234;}
+
+.mat-selection-list { 
+	padding-left:20px;
+	padding-bottom:40px;
+	padding-right:30px;
+	padding-top:20px;
+	max-height:300px;
+	overflow:auto;
+}
+
+#toggleHolder{
+	padding-top:30px;
+	padding-right:30px;
+	padding-bottom:15px;
+	padding-left:10px;
+
+}
+
+#storeOptions{
+	margin-top:18px;
+	margin-left:auto;
+	margin-right:30px;
+}
+
+#storeOptions > button {
+}
+#storeOptions > input {
+	margin-right:10px;
+	margin-left:45px;
+}
+
+#newLanguageOptions {
+	margin-top:18px;
+	margin-left:auto;
+	margin-right:30px;
+	flex:0;
+}
+#newLanguageOptions > input {
+}
+#newLanguageOptions > button {
+	margin-left:10px;
+}

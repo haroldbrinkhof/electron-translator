@@ -1,0 +1,49 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-05-28 16:05+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: main.py:15
+#, python-brace-format
+msgid "Bank account '{id}' was created with initial Balance: {balance}"
+msgstr "test 6"
+
+#: main.py:19
+#, python-brace-format
+msgid "Deposited {amount} to current balance"
+msgstr "test 5"
+
+#: main.py:23
+#, python-brace-format
+msgid "Withdrawned {amount} from current balance"
+msgstr "test 4"
+
+#: main.py:29
+#, python-brace-format
+msgid "Balance for Account '{id}' is: {balance}"
+msgstr "test 3"
+
+#: main.py:50
+msgid "One of the Account numbers does not exist"
+msgstr "test 2"
+
+#: main.py:56
+#, python-breace-format
+msgid ""
+"testSuccessfully transfered {amount} from Account '{from_acccount_id}' to "
+"Account: {to_account_id}"
+msgstr "veranderd"

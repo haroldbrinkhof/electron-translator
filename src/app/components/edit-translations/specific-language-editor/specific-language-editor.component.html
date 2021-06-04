@@ -1,0 +1,53 @@
+<fieldset>
+	<legend>{{currentFile?.language | uppercase}}</legend>
+	<div class="languageHolder"  fxLayout="row">
+		<div fxLayout = "column" id="inputElements">
+			<div>
+				<label>singular:</label> 
+				<input #translationSingularTextField type="text" 
+				value="{{translationSingularText}}" 
+				(input)="translationForSingularChanged(translationSingularTextField.value)" />
+			</div>
+			<div>
+				<label>plural:</label> 
+				<input #translationPluralTextField type="text" 
+				value="{{translationPluralText}}" 
+				(input)="translationForPluralChanged(translationPluralTextField.value)" />
+			</div>
+			<div>
+				<label>context:</label> 
+				<textarea #translationContextTextField  
+				value={{translationContextText}} 
+				(input)="translationForContextChanged(translationContextTextField.value)" ></textarea>
+				<br /><span id="asciidocLink">(This uses <a href="https://asciidoctor.org/docs/asciidoc-writers-guide/">asciidoc</a>)</span>
+			</div>
+			<div>
+				<span class="notice" *ngIf="dirtyMarker">
+					This entry is marked as dirty on: {{dirtyMarker}}
+				</span>
+				<span *ngIf="isApproved">
+					This entry is approved by {{approvedMarker}}
+				</span>
+			</div>
+			<div fxLayout="row">
+				<button #setTranslationButton (click)="setTranslationAction()">
+					Set
+				</button> 
+				<button *ngIf="textChanged" async (click)="resetTranslationsAction()">
+					Reset
+				</button> 
+				<button #approveTranslationButton *ngIf="dirtyMarker" 
+					(click)="approveDirtyTranslationAction()">
+					Approve
+				</button>
+			</div>
+		</div>
+		<div *ngIf="asciidocContent">
+			<fieldset>
+				<legend>context</legend>
+			<div [innerHtml]="asciidocContent">
+			</div>
+			</fieldset>
+		</div>
+	</div>
+</fieldset>

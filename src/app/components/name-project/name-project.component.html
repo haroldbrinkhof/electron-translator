@@ -1,0 +1,12 @@
+<label>Please specify a name for your project:</label><br />
+<input type="text"  [formControl]="nameForm" /> <input [disabled]="!isValidProjectName()" (click)="finalizeProjectImport()" type="button" value="name amd import" /><br />
+ <div *ngIf="nameForm.errors?.required">
+    Name is required.
+  </div>
+Your project consists of the following files:<br />
+<ul>
+	<li *ngFor="let file of project.files">{{file.path}} ({{file.numberOfTranslationKeys()}} translations)</li>
+</ul>
+
+
+

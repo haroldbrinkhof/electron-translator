@@ -1,0 +1,79 @@
+{
+  "name": "electron-app",
+  "version": "0.0.0",
+  "main": "app.js",
+  "directories": {
+    "test": "src/test",
+    "src": "src"
+  },
+  "scripts": {
+    "ng": "ng",
+    "start": "ng build --base-href ./ && electron .",
+    "build": "ng build",
+    "test": "ava",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "~10.1.0",
+    "@angular/cdk": "^10.2.7",
+    "@angular/common": "~10.1.0",
+    "@angular/compiler": "~10.1.0",
+    "@angular/core": "~10.1.0",
+    "@angular/flex-layout": "^12.0.0-beta.34",
+    "@angular/forms": "~10.1.0",
+    "@angular/material": "^10.2.7",
+    "@angular/platform-browser": "~10.1.0",
+    "@angular/platform-browser-dynamic": "~10.1.0",
+    "@angular/router": "~10.1.0",
+    "@types/node": "^12.20.14",
+    "@wizdm/prism": "^3.0.0",
+    "angular-gettext": "^2.4.2",
+    "asciidoctor": "^2.2.4",
+    "electron-json-storage": "^4.5.0",
+    "fs-extra": "^10.0.0",
+    "gettext-parser": "^4.0.4",
+    "ngx-electron": "^2.2.0",
+    "rehype-stringify": "^8.0.0",
+    "rxjs": "^6.6.7",
+    "tree-kit": "^0.7.0",
+    "ts-node-register": "^1.0.0",
+    "tslib": "^2.0.0",
+    "zone.js": "~0.10.2"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.1001.0",
+    "@angular/cli": "~10.1.0",
+    "@angular/compiler-cli": "~10.1.0",
+    "@types/jasmine": "~3.5.0",
+    "@types/jasminewd2": "~2.0.3",
+    "ava": "^3.15.0",
+    "codelyzer": "^6.0.0",
+    "jasmine-core": "~3.6.0",
+    "jasmine-spec-reporter": "~5.0.0",
+    "karma": "~5.0.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage-istanbul-reporter": "~3.0.2",
+    "karma-jasmine": "~4.0.0",
+    "karma-jasmine-html-reporter": "^1.5.0",
+    "path": "^0.12.7",
+    "protractor": "~7.0.0",
+    "sinon": "^11.1.1",
+    "ts-node": "~8.3.0",
+    "tslint": "~6.1.0",
+    "typescript": "~4.0.2"
+  },
+  "ava": {
+    "extensions": [
+      "ts"
+    ],
+    "verbose": true,
+    "files": [
+      "src/test/**/*Test.ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ]
+  }
+}
