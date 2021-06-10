@@ -1,0 +1,27 @@
+<div fxLayout="column">
+	<p>Please fill in your full name and email-address.</p>
+	<span fxLayout="row" ><label>name</label>: <input #nameInput  type="text" (input)="nameChange(nameInput.value)"  [formControl]="name" required /></span>
+	<div *ngIf="name.invalid && (name.dirty || name.touched)"
+    class="alert alert-danger">
+
+  <div *ngIf="name.errors?.required">
+    Name is required.
+  </div>
+  <div *ngIf="name.errors?.pattern">
+    Please fill in your full name.(e.g. Bo Bo)
+  </div>
+</div>
+	<span fxLayout="row" ><label>email</label>: <input #emailInput type="text" (input)="emailChange(emailInput.value)"  [formControl]="email" required /></span>
+	<div *ngIf="email.invalid && (email.dirty || email.touched)"
+    class="alert alert-danger">
+
+  <div *ngIf="email.errors?.required">
+    Email is required.
+  </div>
+  <div *ngIf="email.errors?.email">
+	  Email must follow the proper <i>something@somewhere.ext</i> pattern.
+  </div>
+</div>
+	<div><button (click)="reset()">reset</button> <button [disabled]="emptyOrNotUnique()" (click)="addUserAndGoToWelcome()">this is me</button></div>
+
+</div>

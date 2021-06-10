@@ -6,6 +6,8 @@ const storage = (<any>window).require('electron-json-storage');
 import { Settings } from "../Settings";
 import { ProjectData } from "../Project";
 import * as tree from 'tree-kit';
+import { User } from '../User';
+
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +36,26 @@ export class SettingStorageHandlerService implements OnInit {
 
   ngOnInit(){
 
+  }
+
+  getSettingsFilePath():string{
+	return this.path;
+  }
+
+  getCurrentUser():number{
+	  return this.data.currentUser;
+  }
+  getKnownUsers():User[]{
+	  return this.data.knownUsers;
+  }
+
+  setCurrentUser(index:number){
+	  this.data.currentUser = index;
+	  this.save();
+  }
+  setKnownUsers(knownUsers:User[]){
+	this.data.knownUsers = knownUsers;
+	this.save();
   }
 
   getProjects():ProjectData[]{

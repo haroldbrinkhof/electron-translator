@@ -6,6 +6,8 @@ import { Dirent } from '../Dirent';
 import * as parser from 'gettext-parser';
 import { PoContent } from '../PoContent';
 import * as tree from 'tree-kit';
+import { pull } from 'isomorphic-git';
+import http from 'isomorphic-git/http/web'
 
 
 @Injectable({
@@ -15,10 +17,25 @@ export class TranslationFileHandlerService {
 
   constructor() { }
 
+  private async pullFromRepository(dir:string){
+	  try{
+		const fs = (<any>window).require('fs');
+		await pull( {fs, http ,dir: dir, ref: 'master', 
+			   singleBranch: true, author: { name:'dummy',email:'dummy@example.com'} });
+		console.log('pull done for ' + dir);
+	  } catch(err){
+		console.log('error pulling git for ' + dir + ': ' + err);
+	  }
+
+  }
+
   openProjectFromDirectory(dir:string, projectName:string = ''):Project | undefined{
+	  console.log('opening project from ' + dir);
 	const project:Project = new Project();
+//	this.pullFromRepository(dir);
 	const files:Dirent[] = this.readFilesFromDirectory(dir);
 
+	console.log(files.length + ' files read from ' + dir);
 	if(files == undefined || files.length == 0) {
 		return undefined;
 	}
@@ -30,8 +47,9 @@ export class TranslationFileHandlerService {
 			file.data = this.parsePoFile(filename);
 			file.originalData = (file.data !== undefined) ? tree.clone(file.data) : undefined;
 			project.files.push(file);
-			project.name = projectName;
 		});
+	project.storageDirectory = dir;
+	project.name = projectName;
 
 	if(project.files.filter(e => e.pot).length != 1){
 		return undefined;
@@ -48,18 +66,20 @@ export class TranslationFileHandlerService {
 		return parser.po.parse(content);
 		
 	} catch(err){
-		console.log(err);
+		console.log('error parsing PO file ' + filename + ': ' + err);
 	}
 
 	return undefined;  
 
   }
   private readFilesFromDirectory(dir:string):Dirent[] | undefined{
-	const fs = (<any>window).require('fs');
 	let files:Dirent[];
 	try{
+		const fs = (<any>window).require('fs');
 		files = fs.readdirSync(dir, {"withFileTypes": true});	
-	} catch(ignored){ /* ignored on purpose */ }
+	} catch(err){ 
+		console.log('error reading files from directory ' + dir + ': ' + err);       
+	}
 	return files;
   }
 

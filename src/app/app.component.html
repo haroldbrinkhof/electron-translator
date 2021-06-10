@@ -1,12 +1,9 @@
 Current project: 
 <span *ngIf="currentProject; else noneBlock" async>{{currentProject.name}}</span>
 <ng-template #noneBlock><span> none. </span></ng-template> |  
-<span *ngIf="projects; else noneImportedBlock" async> Known projects: 
-<select #projectSelect >
-	<option *ngFor="let project of projects" value="{{project.storageDirectory}}" async>{{project.name}}</option>
-</select> 
-<input type="button" value="load" #projectLoadButton (click)="loadProjectFilesAndNavigate(projectSelect.value)" /> </span>
-<ng-template #noneImportedBlock> No projects yet imported. </ng-template> | 
- <input type="button" value="import a new project" #projectImportButton (click)="selectProjectDirectory()" >
+<app-open-project></app-open-project>
+| 
+  | 
+ <a routerLink="About">about</a> | 
 
 <router-outlet></router-outlet>

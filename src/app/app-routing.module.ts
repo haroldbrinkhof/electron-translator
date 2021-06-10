@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { NameProjectComponent } from './components/name-project/name-project.component';
 import { EditTranslationsComponent } from './components/edit-translations/edit-translations.component';
+import { AddUserComponent } from './components/add-user/add-user.component';
+import { AboutComponent } from './components/about/about.component';
+import { WelcomeUserComponent } from './components/welcome-user/welcome-user.component';
 
 const routes: Routes = [
-	{ path: 'NameProject', component: NameProjectComponent },
-	{ path: 'EditTranslations', component: EditTranslationsComponent }
+	{ path: 'EditTranslations', component: EditTranslationsComponent },
+	{ path: 'AddUser', component: AddUserComponent },
+	{ path: 'About', component: AboutComponent },
+	{ path: 'WelcomeUser', component: WelcomeUserComponent },
 ];
 
 @NgModule({

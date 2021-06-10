@@ -4,7 +4,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NameProjectComponent } from './components/name-project/name-project.component';
 import { ProjectService } from './services/project.service';
 import { EditTranslationsComponent } from './components/edit-translations/edit-translations.component';
 import { SpecificLanguageEditorComponent } from './components/edit-translations/specific-language-editor/specific-language-editor.component';
@@ -14,14 +13,23 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatListModule} from '@angular/material/list';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AddUserComponent } from './components/add-user/add-user.component';
+import { AboutComponent } from './components/about/about.component';
+import { WelcomeUserComponent } from './components/welcome-user/welcome-user.component';
+import { OpenProjectComponent } from './components/open-project/open-project.component';
+import { StartNewProjectComponent } from './components/start-new-project/start-new-project.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NameProjectComponent,
     EditTranslationsComponent,
-    SpecificLanguageEditorComponent
+    SpecificLanguageEditorComponent,
+    AddUserComponent,
+    AboutComponent,
+    WelcomeUserComponent,
+    OpenProjectComponent,
+    StartNewProjectComponent
   ],
   imports: [
     BrowserModule,

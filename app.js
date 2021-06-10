@@ -10,7 +10,8 @@ const {app, BrowserWindow} = require('electron')
         height: 600,
         webPreferences: {
           nodeIntegration: true,
-	  enableRemoteModule: true
+	  enableRemoteModule: true,
+	  contextIsolation: false
         }
       })
 

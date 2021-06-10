@@ -14,19 +14,38 @@ export class ProjectService {
 	currentProject:BehaviorSubject<Project> = new BehaviorSubject(undefined);
 	private _allProjects:Project[];
 	allProjects:BehaviorSubject<Project[]> = new BehaviorSubject([]);
+	private _currentProjectIndex;
+	currentProjectIndex:BehaviorSubject<number> = new BehaviorSubject(-1);
 
-  constructor(private settingStorageHandlerService:SettingStorageHandlerService, private translationFileHandlerService:TranslationFileHandlerService) {
-	  this._allProjects = this.settingStorageHandlerService.getProjects()?.map(p => this.loadProjectFormSettingsData(p));
+  constructor(private settingStorageHandlerService:SettingStorageHandlerService, 
+	      private translationFileHandlerService:TranslationFileHandlerService) {
+	  this._allProjects = this.settingStorageHandlerService.getProjects()?.map(p => this.loadProjectFromSettingsData(p));
 	  this.allProjects.next(this._allProjects);
   }
 
-  loadProjectFormSettingsData(p:ProjectData):Project{
+  loadProjectFromSettingsData(p:ProjectData):Project{
 	const project:Project = this.translationFileHandlerService.openProjectFromDirectory(p.storageDirectory, p.name);
 	if(project !== undefined){
 		project.name = p.name;
 		project.storageDirectory = p.storageDirectory;
 	}
 	return project;
+  }
+
+  loadProjectFromDirectoryAndSetAsCurrent(directory:string):boolean{
+	const selectedProject:Project = this._allProjects.filter(p => p.storageDirectory === directory)[0];
+	if(selectedProject !== undefined){
+		const project:Project = this.translationFileHandlerService.openProjectFromDirectory(selectedProject.storageDirectory, selectedProject.name);
+		if(project){
+			this._currentProject = project;
+			this.currentProject.next(project);
+			this._currentProjectIndex = this._allProjects.findIndex(e => e.storageDirectory === selectedProject.storageDirectory);
+		        this.currentProjectIndex.next(this._currentProjectIndex);
+			return true;
+		}
+	}
+
+	return false;
   }
 
   getOriginalTranslationFor(filePath:string, key:string, mode:Mode):string | undefined{
@@ -65,6 +84,11 @@ export class ProjectService {
 	return this._allProjects == undefined || this._allProjects == null || this._allProjects.filter(p => p.name == name).length == 0; 
   }
 
+  addProjectAndSetAsCurrent(project:Project){
+	this.addProject(project);
+	this.setCurrentProject(project);
+  }
+
   addProject(project:Project):Project[] | undefined{
 	if(!this.isProjectnameUnique(project.name)){
 	      return undefined;
@@ -86,6 +110,8 @@ export class ProjectService {
 	this._currentProject = project;
 	this.freshlyImportedProject = undefined;
 	this.currentProject.next(this._currentProject);
+	this._currentProjectIndex = this._allProjects.findIndex(project => project === this._currentProject);
+	this.currentProjectIndex.next(this._currentProjectIndex);
   }
 
 }

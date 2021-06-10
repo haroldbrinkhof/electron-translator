@@ -1,0 +1,11 @@
+<span *ngIf="getNotSelectedProjects(); else noneImportedBlock" async>Known projects: 
+	<select #projectSelect >
+		<option *ngFor="let project of getNotSelectedProjects()" 
+			value="{{project.storageDirectory}}" 
+			async>{{project.name}}</option>
+	</select> 
+	<input type="button" value="load" #projectLoadButton 
+		(click)="loadProjectFilesAndNavigate(projectSelect.value)" />
+</span>
+<ng-template #noneImportedBlock>No projects yet imported.</ng-template> 
+

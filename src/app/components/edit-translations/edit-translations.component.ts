@@ -28,14 +28,11 @@ export class EditTranslationsComponent implements OnInit {
 
   ngOnInit(): void {
 	  //this.keys = this.getKeys();
-	  console.log(this.keys);
 	  this.projectService.currentProject.subscribe((value:Project) => {
 		  this.currentProject = value;
 		  this.keys = this.getKeys(this.currentProject);
 		  this.dirtyCount = this.currentProject.numberOfTranslationKeys(true, false);
 		  this.missingCount = this.currentProject.numberOfTranslationKeys(false, true);
-		  console.log('setting project to ' + JSON.stringify(value) + ' using subscribe' );
-		  console.log('setting project ' + value.name + ' using subscribe' );
 	  }
 						      );
   }
@@ -45,7 +42,6 @@ export class EditTranslationsComponent implements OnInit {
   }
 
   selectedTranslationKey(key:MatSelectionListChange):void{
-	console.log('selected translation key: ' + key.options[0].value);
 	this.currentKey.next(key.options[0].value);
   }
 
@@ -55,7 +51,6 @@ export class EditTranslationsComponent implements OnInit {
 		  this.dirtyCount = this.currentProject.numberOfTranslationKeys(true, false);
 		  this.missingCount = this.currentProject.numberOfTranslationKeys(false, true);
 	  }
-	console.log('parent: text changed ' + event);
   }
 
   saveAction():void{
