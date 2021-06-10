@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { StartNewProjectComponent } from '../start-new-project/start-new-project.component';
 import { OpenProjectComponent } from '../open-project/open-project.component';
 import { User } from '../../User';

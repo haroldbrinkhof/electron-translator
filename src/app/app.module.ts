@@ -18,6 +18,7 @@ import { AboutComponent } from './components/about/about.component';
 import { WelcomeUserComponent } from './components/welcome-user/welcome-user.component';
 import { OpenProjectComponent } from './components/open-project/open-project.component';
 import { StartNewProjectComponent } from './components/start-new-project/start-new-project.component';
+import { ChangeUserComponent } from './components/change-user/change-user.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { StartNewProjectComponent } from './components/start-new-project/start-n
     AboutComponent,
     WelcomeUserComponent,
     OpenProjectComponent,
-    StartNewProjectComponent
+    StartNewProjectComponent,
+    ChangeUserComponent
   ],
   imports: [
     BrowserModule,

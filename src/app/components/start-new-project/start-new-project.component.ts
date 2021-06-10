@@ -4,6 +4,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { ProjectService } from '../../services/project.service';
 import { TranslationFileHandlerService } from '../../services/translation-file-handler.service';
 import { Project } from '../../Project';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @Component({
   selector: 'app-start-new-project',
